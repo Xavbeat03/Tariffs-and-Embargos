@@ -6,9 +6,9 @@ plugins {
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0" // Automatic plugin.yml generation
 }
 
-group = "com.github.ExampleUser.ExamplePlugin"
-version = "1.0.0"
-description = ""
+group = "com.github.Xavbeat03.Tariffs"
+version = "0.0.1"
+description = "Plugin that allows players to create Tariffs and Embargoe's to other players."
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17)) // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.

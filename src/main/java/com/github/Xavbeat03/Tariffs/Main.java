@@ -1,7 +1,7 @@
-package com.github.ExampleUser.ExamplePlugin;
+package com.github.Xavbeat03.Tariffs;
 
-import com.github.ExampleUser.ExamplePlugin.command.CommandHandler;
-import com.github.ExampleUser.ExamplePlugin.listener.ListenerHandler;
+import com.github.Xavbeat03.Tariffs.command.CommandHandler;
+import com.github.Xavbeat03.Tariffs.listener.ListenerHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {

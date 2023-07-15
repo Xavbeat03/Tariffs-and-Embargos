@@ -1,4 +1,4 @@
-package com.github.ExampleUser.ExamplePlugin.command;
+package com.github.Xavbeat03.Tariffs.command;
 
 import com.github.milkdrinkers.colorparser.ColorParser;
 import dev.jorel.commandapi.CommandAPICommand;

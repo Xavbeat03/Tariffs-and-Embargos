@@ -1,6 +1,6 @@
-package com.github.ExampleUser.ExamplePlugin.command;
+package com.github.Xavbeat03.Tariffs.command;
 
-import com.github.ExampleUser.ExamplePlugin.Main;
+import com.github.Xavbeat03.Tariffs.Main;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPIBukkitConfig;
 

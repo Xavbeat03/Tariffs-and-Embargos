@@ -1,6 +1,6 @@
-package com.github.ExampleUser.ExamplePlugin.listener;
+package com.github.Xavbeat03.Tariffs.listener;
 
-import com.github.ExampleUser.ExamplePlugin.Main;
+import com.github.Xavbeat03.Tariffs.Main;
 
 /**
  * A class to handle registration of event listeners.

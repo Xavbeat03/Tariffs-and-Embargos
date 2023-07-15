@@ -4,4 +4,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "ExamplePlugin"
+rootProject.name = "Tariffs-Embargos"
