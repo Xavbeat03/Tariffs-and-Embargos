@@ -28,6 +28,11 @@ repositories {
     maven("https://repo.codemc.org/repository/maven-public/") {
         content { includeGroup("dev.jorel") }
     }
+
+    maven("https://repo.minebench.de/"){
+        content{includeGroup("com.acrobot.chestshop")}
+    }
+
 }
 
 dependencies {
@@ -41,6 +46,8 @@ dependencies {
     implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
     compileOnly("dev.jorel:commandapi-annotations:9.0.3")
     annotationProcessor("dev.jorel:commandapi-annotations:9.0.3")
+
+    compileOnly("com.acrobot.chestshop:chestshop:3.12")
 }
 
 tasks {
