@@ -22,7 +22,7 @@ public class CommandHandler {
         CommandAPI.onEnable();
 
         // Register commands here
-        new ExampleCommand();
+        new Tariff();
     }
 
     public void onDisable() {

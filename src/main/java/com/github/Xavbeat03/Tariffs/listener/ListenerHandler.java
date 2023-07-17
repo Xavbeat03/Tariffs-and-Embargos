@@ -19,6 +19,7 @@ public class ListenerHandler {
     public void onEnable() {
         // Register listeners here
         //instance.getServer().getPluginManager().registerEvents(new PlayerJoinListener(instance), instance);
+
     }
 
     public void onDisable() {

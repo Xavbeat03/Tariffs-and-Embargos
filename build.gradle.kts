@@ -22,6 +22,7 @@ repositories {
     maven("https://jitpack.io/") {
         content {
             includeGroup("com.github.milkdrinkers")
+            includeGroup("com.github.TownyAdvanced")
         }
     }
 
@@ -32,6 +33,11 @@ repositories {
     maven("https://repo.minebench.de/"){
         content{includeGroup("com.acrobot.chestshop")}
     }
+
+    maven("https://github.com/"){
+        content{includeGroup("dev.triumphteam")}
+    }
+
 
 }
 
@@ -44,10 +50,15 @@ dependencies {
     implementation("com.github.milkdrinkers:colorparser:1.0.7")
 
     implementation("dev.jorel:commandapi-bukkit-shade:9.0.3")
+
+    implementation("dev.triumphteam:triumph-gui:3.1.5")
+
     compileOnly("dev.jorel:commandapi-annotations:9.0.3")
     annotationProcessor("dev.jorel:commandapi-annotations:9.0.3")
 
     compileOnly("com.acrobot.chestshop:chestshop:3.12")
+
+    compileOnly("com.palmergames.bukkit.towny:towny:0.99.5.0")
 }
 
 tasks {
