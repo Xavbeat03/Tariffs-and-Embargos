@@ -9,6 +9,18 @@ public class Main extends JavaPlugin {
     private CommandHandler commandHandler;
     private ListenerHandler listenerHandler;
 
+    /**
+     * <h1>Instance of BukkitAudiences for the plugin.</h1>
+     * @category Plugin_State
+     * @see BukkitAudiences
+     */
+    private static BukkitAudiences adventure;
+    /**
+     * <h1>The Current instance of this plugin.</h1>
+     * @category Plugin_State
+     * @see Main
+     */
+
     public static Main getInstance() {
         return instance;
     }

@@ -20,9 +20,9 @@ public class Tariff {
             .withShortDescription("This command allows your town to tariff either a player, town, or nation  with /tariff")
             .withPermission("Tariffs.tariff")
             .withArguments(
-                    new StringArgument("entity value" /* p, n, t*/).includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
-                    new StringArgument("Tariffable Entity Name"),
-                    new IntegerRangeArgument("The amount that is tariffed")
+                    new StringArgument("t_entity_value" /* p, n, t*/).includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
+                    new StringArgument("t_tariffable_entity"),
+                    new IntegerRangeArgument("t_tariff_value")
             )
             .executes(this::tariff)
             .register();
@@ -31,9 +31,9 @@ public class Tariff {
                 .withShortDescription("This command allows your nation to tariff either a player, town, or nation with /tariff")
                 .withPermission("Tariffs.ntariff")
                 .withArguments(
-                        new StringArgument("entity value" /* p, n, t*/).includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
-                        new StringArgument("Tariffable Entity Name"),
-                        new IntegerRangeArgument("The amount that is tariffed")
+                        new StringArgument("n_entity_value" /* p, n, t*/).includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
+                        new StringArgument("n_tariffable_entity"),
+                        new IntegerRangeArgument("n_tariff_value")
                 )
                 .executes(this::ntariff)
                 .register();
@@ -42,11 +42,13 @@ public class Tariff {
     private void tariff(CommandSender sender, CommandArguments args) {
         List<String> entity_value = new ArrayList<>() ;
         entity_value.add("p"); entity_value.add("n"); entity_value.add("t");
-        String arg_entity_value = args.get("entity value") != null ? args.get("entity value").toString(): null;
+        String arg_entity_value = args.get("t_entity_value") != null ? args.get("t_entity_value").toString(): null;
         if (!entity_value.contains(arg_entity_value)){
             //Exit Command, first arg isn't p, n, or t
             return;
         }
+
+
     }
     private void ntariff(CommandSender sender, CommandArguments args) {
 
