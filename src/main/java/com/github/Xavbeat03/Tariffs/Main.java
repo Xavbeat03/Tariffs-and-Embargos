@@ -1,11 +1,13 @@
 package com.github.Xavbeat03.Tariffs;
 
+import com.Acrobot.ChestShop.Libs.Kyori.adventure.platform.bukkit.BukkitAudiences;
 import com.github.Xavbeat03.Tariffs.command.CommandHandler;
 import com.github.Xavbeat03.Tariffs.listener.ListenerHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
     private static Main instance;
+
     private CommandHandler commandHandler;
     private ListenerHandler listenerHandler;
 
@@ -14,7 +16,7 @@ public class Main extends JavaPlugin {
      * @category Plugin_State
      * @see BukkitAudiences
      */
-    private static BukkitAudiences adventure;
+    private BukkitAudiences adventure;
     /**
      * <h1>The Current instance of this plugin.</h1>
      * @category Plugin_State
@@ -27,6 +29,7 @@ public class Main extends JavaPlugin {
 
     public void onLoad() {
         instance = this;
+
         commandHandler = new CommandHandler(instance);
         listenerHandler = new ListenerHandler(instance);
 

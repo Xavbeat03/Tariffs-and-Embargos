@@ -8,7 +8,7 @@ plugins {
 
 group = "com.github.Xavbeat03.Tariffs"
 version = "0.0.1"
-description = "Plugin that allows players to create Tariffs and Embargoe's to other players."
+description = "Plugin that allows players to create Tariffs and Embargo's to other players."
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17)) // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
@@ -113,6 +113,6 @@ bukkit {
 
     // Misc properties
     load = net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder.POSTWORLD // STARTUP or POSTWORLD
-    depend = listOf()
+    depend = listOf("Towny", "Chestshop")
     softDepend = listOf()
 }

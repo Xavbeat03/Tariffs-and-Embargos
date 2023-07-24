@@ -1,14 +1,12 @@
 package com.github.Xavbeat03.Tariffs.command;
 
-import com.github.milkdrinkers.colorparser.ColorParser;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.ArgumentSuggestions;
-import dev.jorel.commandapi.arguments.DoubleArgument;
 import dev.jorel.commandapi.arguments.IntegerRangeArgument;
 import dev.jorel.commandapi.arguments.StringArgument;
 import dev.jorel.commandapi.executors.CommandArguments;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,13 +38,29 @@ public class Tariff {
     }
 
     private void tariff(CommandSender sender, CommandArguments args) {
+
         List<String> entity_value = new ArrayList<>() ;
         entity_value.add("p"); entity_value.add("n"); entity_value.add("t");
         String arg_entity_value = args.get("t_entity_value") != null ? args.get("t_entity_value").toString(): null;
-        if (!entity_value.contains(arg_entity_value)){
+        if (!entity_value.contains(arg_entity_value) || arg_entity_value == null ){
             //Exit Command, first arg isn't p, n, or t
             return;
         }
+        switch(arg_entity_value){
+            case "p" -> {
+                //check that arg 1 is a player, if so add it to the town tariff database
+
+            }
+            case "t" -> {
+                //check that arg 1 is a town, if so add it to the town tariff database
+
+            }
+            case "n" -> {
+                //check that arg 1 is a nation, if so add it to the town tariff database
+
+            }
+        }
+
 
 
     }
