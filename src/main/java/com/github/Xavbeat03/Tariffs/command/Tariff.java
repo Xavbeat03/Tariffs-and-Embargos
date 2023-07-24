@@ -1,5 +1,6 @@
 package com.github.Xavbeat03.Tariffs.command;
 
+import com.palmergames.bukkit.towny.TownyAPI;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.ArgumentSuggestions;
 import dev.jorel.commandapi.arguments.IntegerRangeArgument;
@@ -46,17 +47,21 @@ public class Tariff {
             //Exit Command, first arg isn't p, n, or t
             return;
         }
+        String tariffable_entity = (String) args.get("t_tariffable_entity");
         switch(arg_entity_value){
             case "p" -> {
                 //check that arg 1 is a player, if so add it to the town tariff database
+                TownyAPI.getTownyObjectStartingWith(tariffable_entity, "r");
 
             }
             case "t" -> {
                 //check that arg 1 is a town, if so add it to the town tariff database
+                TownyAPI.getTownyObjectStartingWith(tariffable_entity, "t");
 
             }
             case "n" -> {
                 //check that arg 1 is a nation, if so add it to the town tariff database
+                TownyAPI.getTownyObjectStartingWith(tariffable_entity, "n");
 
             }
         }
@@ -65,7 +70,31 @@ public class Tariff {
 
     }
     private void ntariff(CommandSender sender, CommandArguments args) {
+        List<String> entity_value = new ArrayList<>() ;
+        entity_value.add("p"); entity_value.add("n"); entity_value.add("t");
+        String arg_entity_value = args.get("n_entity_value") != null ? args.get("n_entity_value").toString(): null;
+        if (!entity_value.contains(arg_entity_value) || arg_entity_value == null ){
+            //Exit Command, first arg isn't p, n, or t
+            return;
+        }
+        String tariffable_entity = (String) args.get("n_tariffable_entity");
+        switch(arg_entity_value){
+            case "p" -> {
+                //check that arg 1 is a player, if so add it to the town tariff database
+                TownyAPI.getTownyObjectStartingWith(tariffable_entity, "r");
 
+            }
+            case "t" -> {
+                //check that arg 1 is a town, if so add it to the town tariff database
+                TownyAPI.getTownyObjectStartingWith(tariffable_entity, "t");
+
+            }
+            case "n" -> {
+                //check that arg 1 is a nation, if so add it to the town tariff database
+                TownyAPI.getTownyObjectStartingWith(tariffable_entity, "n");
+
+            }
+        }
 
     }
 }

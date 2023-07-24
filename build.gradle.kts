@@ -19,6 +19,12 @@ repositories {
 
     maven("https://papermc.io/repo/repository/maven-public/")
 
+    maven("https://repo.glaremasters.me/repository/towny/") {
+        content {
+            includeGroup("com.palmergames.bukkit.towny")
+        }
+    }
+
     maven("https://jitpack.io/") {
         content {
             includeGroup("com.github.milkdrinkers")
