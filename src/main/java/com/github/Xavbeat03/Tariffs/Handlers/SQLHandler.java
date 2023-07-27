@@ -1,5 +1,7 @@
 package com.github.Xavbeat03.Tariffs.Handlers;
 
+import com.github.Xavbeat03.Tariffs.DataManagement.DB;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 

@@ -1,6 +1,8 @@
 package com.github.Xavbeat03.Tariffs;
 
 import com.Acrobot.ChestShop.Libs.Kyori.adventure.platform.bukkit.BukkitAudiences;
+import com.github.Xavbeat03.Tariffs.DataManagement.DB;
+import com.github.Xavbeat03.Tariffs.DataManagement.DataManager;
 import com.github.Xavbeat03.Tariffs.command.CommandHandler;
 import com.github.Xavbeat03.Tariffs.listener.ListenerHandler;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -10,6 +12,7 @@ public class Main extends JavaPlugin {
 
     private CommandHandler commandHandler;
     private ListenerHandler listenerHandler;
+    private DataManager dataManager;
 
     /**
      * <h1>Instance of BukkitAudiences for the plugin.</h1>
@@ -45,5 +48,9 @@ public class Main extends JavaPlugin {
     public void onDisable() {
         commandHandler.onDisable();
         listenerHandler.onDisable();
+    }
+
+    public DataManager getDataManager() {
+        return dataManager;
     }
 }
