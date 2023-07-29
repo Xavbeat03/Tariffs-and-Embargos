@@ -65,6 +65,10 @@ dependencies {
     compileOnly("com.acrobot.chestshop:chestshop:3.12")
 
     compileOnly("com.palmergames.bukkit.towny:towny:0.99.5.0")
+
+    implementation("com.zaxxer:HikariCP:5.0.1")
+
+    implementation("org.mariadb.jdbc:mariadb-java-client:3.1.4")
 }
 
 tasks {

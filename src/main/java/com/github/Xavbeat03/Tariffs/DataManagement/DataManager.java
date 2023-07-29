@@ -1,8 +1,14 @@
 package com.github.Xavbeat03.Tariffs.DataManagement;
 
+import com.github.Xavbeat03.Tariffs.Handlers.Config;
+import com.github.Xavbeat03.Tariffs.Handlers.SQLHandler;
 import com.github.Xavbeat03.Tariffs.Main;
+import com.palmergames.hikaricp.HikariConfig;
+import com.palmergames.hikaricp.HikariDataSource;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -10,15 +16,18 @@ import java.sql.SQLException;
  * Mainly borrowed code from the DataManager.java file in the AlathraWar repository
  */
 public class DataManager {
+
     private final Main instance;
 
+    private HikariConfig hikariConfig;
+    private HikariDataSource hikariDataSource;
     public DataManager(Main instance){
         this.instance = instance;
     }
 
     public void onLoad() {
         openConnection();
-        SQLQueries.initDB();
+        SQLHandler.initDB();
     }
 
     public void onEnable() {
