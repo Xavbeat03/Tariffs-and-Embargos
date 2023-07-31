@@ -10,6 +10,7 @@ import com.github.Xavbeat03.Tariffs.listener.ListenerHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class Main extends JavaPlugin {
@@ -21,9 +22,9 @@ public class Main extends JavaPlugin {
 
     private ConfigManager configManager;
 
-    private LinkedHashMap<UUID, TariffObject> TownMap = new LinkedHashMap<>();
-    private LinkedHashMap<UUID, TariffObject> NationMap = new LinkedHashMap<>();
-    private LinkedHashMap<UUID, TariffObject> PlayerMap = new LinkedHashMap<>();
+    private LinkedHashMap<UUID, List<TariffObject>> TownMap = new LinkedHashMap<>();
+    private LinkedHashMap<UUID, List<TariffObject>> NationMap = new LinkedHashMap<>();
+    private LinkedHashMap<UUID, List<TariffObject>> PlayerMap = new LinkedHashMap<>();
 
 
 
@@ -75,27 +76,27 @@ public class Main extends JavaPlugin {
         return configManager;
     }
 
-    public LinkedHashMap<UUID, TariffObject> getTownMap() {
+    public LinkedHashMap<UUID, List<TariffObject>> getTownMap() {
         return TownMap;
     }
 
-    public void setTownMap(LinkedHashMap<UUID, TariffObject> townMap) {
+    public void setTownMap(LinkedHashMap<UUID, List<TariffObject>> townMap) {
         TownMap = townMap;
     }
 
-    public LinkedHashMap<UUID, TariffObject> getNationMap() {
+    public LinkedHashMap<UUID, List<TariffObject>> getNationMap() {
         return NationMap;
     }
 
-    public void setNationMap(LinkedHashMap<UUID, TariffObject> nationMap) {
+    public void setNationMap(LinkedHashMap<UUID, List<TariffObject>> nationMap) {
         NationMap = nationMap;
     }
 
-    public LinkedHashMap<UUID, TariffObject> getPlayerMap() {
+    public LinkedHashMap<UUID, List<TariffObject>> getPlayerMap() {
         return PlayerMap;
     }
 
-    public void setPlayerMap(LinkedHashMap<UUID, TariffObject> playerMap) {
+    public void setPlayerMap(LinkedHashMap<UUID, List<TariffObject>> playerMap) {
         PlayerMap = playerMap;
     }
 }
