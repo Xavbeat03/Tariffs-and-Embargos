@@ -19,6 +19,7 @@ import org.bukkit.entity.Player;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Tariff {
@@ -56,7 +57,18 @@ public class Tariff {
                 new StringArgument("t_entity_value").includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
                 new StringArgument("t_tariffable_entity").includeSuggestions(ArgumentSuggestions.strings(String.valueOf(townyInstance.getTowns()), String.valueOf(townyInstance.getNations())))
             )
-            .executes()
+            .executes(this::embargo)
+            .register();
+
+        new CommandAPICommand("nembargo")
+            .withFullDescription("This command allows your nation to embargo either a player, town, or nation with /embargo")
+            .withShortDescription("This command embargos other entities")
+            .withPermission("Tariffs.tariff")
+            .withArguments(
+                new StringArgument("n_entity_value").includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
+                new StringArgument("n_tariffable_entity").includeSuggestions(ArgumentSuggestions.strings(String.valueOf(townyInstance.getTowns()), String.valueOf(townyInstance.getNations())))
+            )
+            .executes(this::embargo)
             .register();
     }
 
@@ -160,8 +172,40 @@ public class Tariff {
     }
 
     private void embargo(CommandSender sender, CommandArguments commandArguments){
-        Object[] argarray = new Object[commandArguments.count() + 1];
+        if(commandArguments.count() > 2) return; //TODO send CommandSender a message stating too many args
+        Object[] argarray = new Object[commandArguments.count() + 1]; //Create argarray with -1 as last arg
         argarray[argarray.length-1] = -1;
-        CommandArguments passedArgs = new CommandArguments()
+        int i = 0;
+        for (Object object: commandArguments.args()){
+            argarray[i] = object;
+            i++;
+        }
+
+        Map<String, Object> argMap = commandArguments.argsMap();
+        argMap.put("t_tariff_value", -1); //Create argMap with -1 attached to t_tariff_value
+
+        String argString = commandArguments.getFullInput();//Add " -1" to full input
+        argString += " -1";
+
+        CommandArguments passedArgs = new CommandArguments(argarray, argMap, argString);
+    }
+
+    private void nEmbargo(CommandSender sender, CommandArguments commandArguments){
+        if(commandArguments.count() > 2) return; //TODO send CommandSender a message stating too many args
+        Object[] argarray = new Object[commandArguments.count() + 1]; //Create argarray with -1 as last arg
+        argarray[argarray.length-1] = -1;
+        int i = 0;
+        for (Object object: commandArguments.args()){
+            argarray[i] = object;
+            i++;
+        }
+
+        Map<String, Object> argMap = commandArguments.argsMap();
+        argMap.put("n_tariff_value", -1); //Create argMap with -1 attached to t_tariff_value
+
+        String argString = commandArguments.getFullInput();//Add " -1" to full input
+        argString += " -1";
+
+        CommandArguments passedArgs = new CommandArguments(argarray, argMap, argString);
     }
 }
