@@ -7,6 +7,7 @@ import com.github.Xavbeat03.Tariffs.DataManagement.DataManager;
 import com.github.Xavbeat03.Tariffs.Objects.TariffObject;
 import com.github.Xavbeat03.Tariffs.command.CommandHandler;
 import com.github.Xavbeat03.Tariffs.listener.ListenerHandler;
+import com.palmergames.bukkit.towny.TownyAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.LinkedHashMap;
@@ -98,5 +99,9 @@ public class Main extends JavaPlugin {
 
     public void setPlayerMap(LinkedHashMap<UUID, List<TariffObject>> playerMap) {
         PlayerMap = playerMap;
+    }
+
+    public TownyAPI getTownyInstance(){
+        return TownyAPI.getInstance();
     }
 }

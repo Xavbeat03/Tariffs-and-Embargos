@@ -158,7 +158,7 @@ public class SQLHandler {
     public static void townCreateTariff(Connection con, TariffObject tariff){ //Should do Upsert
          try(
                  PreparedStatement tariffStatement = con.prepareStatement(""+
-                     "IF NOT EXISTS (SELECT * FROM 'town_tariffs' WHERE 'origin' = ? AND 'target' = ? AND 'target_type' = ? " +
+                     "IF NOT EXISTS (SELECT * FROM 'town_tariffs' WHERE 'origin' = ? AND 'target' = ? AND 'target_type' = ?) " +
                      "  INSERT INTO `town_tariffs` (`origin`, `target`, `target_type`, `value` ) " +
                      "  VALUES (?, ?, ?, ?) " +
                      "ELSE" +
