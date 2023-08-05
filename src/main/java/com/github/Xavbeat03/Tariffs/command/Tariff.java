@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Tariff {
-    final TownyAPI townyInstance = Main.getInstance().getTownyInstance();
+    static final TownyAPI townyInstance = Main.getInstance().getTownyInstance();
     public Tariff() {
         new CommandAPICommand("tariff")
             .withFullDescription("This command allows your town to tariff either a player, town, or nation  with /tariff")
@@ -32,7 +32,7 @@ public class Tariff {
             .withArguments(
                     new StringArgument("t_entity_value" /* p, n, t*/).includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
                     new StringArgument("t_tariffable_entity").includeSuggestions(ArgumentSuggestions.strings(String.valueOf(townyInstance.getTowns()), String.valueOf(townyInstance.getNations()))),
-                    new IntegerRangeArgument("t_tariff_value").
+                    new IntegerRangeArgument("t_tariff_value")
             )
             .executes(this::tariff)
             .register();
@@ -87,12 +87,18 @@ public class Tariff {
         String tariffable_entity = (String) args.get("t_tariffable_entity");
         if(args.count() < 3) return;
         int tariff_value = (int) args.get("t_tariff_value");
+        if(tariff_value < -1){
+            return; //TODO give sender a message telling them that the integer value was out of bounds
+        }
+        if (townyInstance.getTown((Player) sender) == null){
+            return; //TODO give sender a message about not being in a town
+        }
 
         try {
             switch (arg_entity_value) {
                 case "p" -> {
                     //check that arg 1 is a player, if so add it to the town tariff database
-                    townyInstance.getTownyObjectStartingWith(tariffable_entity, "r");
+                    TownyAPI.getTownyObjectStartingWith(tariffable_entity, "r");
                     if(Bukkit.getPlayerUniqueId(tariffable_entity)==null) return; //TODO give command sender message that states player didn't exist
                     TariffObject tariff = new TariffObject(townyInstance.getTown((Player) sender).getUUID(), Bukkit.getPlayerUniqueId(tariffable_entity), arg_entity_value, tariff_value);
 
@@ -100,7 +106,7 @@ public class Tariff {
                 }
                 case "t" -> {
                     //check that arg 1 is a town, if so add it to the town tariff database
-                   if ( townyInstance.getTownyObjectStartingWith(tariffable_entity, "t").isEmpty()) return; //TODO give command sender message that states town didn't exist
+                   if ( TownyAPI.getTownyObjectStartingWith(tariffable_entity, "t").isEmpty()) return; //TODO give command sender message that states town didn't exist
                     TariffObject tariff = new TariffObject(townyInstance.getTown((Player) sender).getUUID(), townyInstance.getTown(tariffable_entity).getUUID(), arg_entity_value, tariff_value);
 
                     SQLHandler.townCreateTariff(DB.get(), tariff);
@@ -108,7 +114,7 @@ public class Tariff {
                 }
                 case "n" -> {
                     //check that arg 1 is a nation, if so add it to the town tariff database
-                    if (townyInstance.getTownyObjectStartingWith(tariffable_entity, "n").isEmpty()) return; //TODO give command sender message that states town didn't exist
+                    if (TownyAPI.getTownyObjectStartingWith(tariffable_entity, "n").isEmpty()) return; //TODO give command sender message that states town didn't exist
                     TariffObject tariff = new TariffObject(townyInstance.getTown((Player) sender).getUUID(), townyInstance.getNation(tariffable_entity).getUUID(), arg_entity_value, tariff_value);
 
                     SQLHandler.townCreateTariff(DB.get(), tariff);
@@ -141,7 +147,7 @@ public class Tariff {
             switch (arg_entity_value) {
                 case "p" -> {
                     //check that arg 1 is a player, if so add it to the town tariff database
-                    townyInstance.getTownyObjectStartingWith(tariffable_entity, "r");
+                    TownyAPI.getTownyObjectStartingWith(tariffable_entity, "r");
                     if(Bukkit.getPlayerUniqueId(tariffable_entity)==null) return; //TODO give command sender message that states player didn't exist
                     TariffObject tariff = new TariffObject(townyInstance.getTown((Player) sender).getUUID(), Bukkit.getPlayerUniqueId(tariffable_entity), arg_entity_value, tariff_value);
 
@@ -149,7 +155,7 @@ public class Tariff {
                 }
                 case "t" -> {
                     //check that arg 1 is a town, if so add it to the town tariff database
-                    if ( townyInstance.getTownyObjectStartingWith(tariffable_entity, "t").isEmpty()) return; //TODO give command sender message that states town didn't exist
+                    if ( TownyAPI.getTownyObjectStartingWith(tariffable_entity, "t").isEmpty()) return; //TODO give command sender message that states town didn't exist
                     TariffObject tariff = new TariffObject(townyInstance.getTown((Player) sender).getUUID(), townyInstance.getTown(tariffable_entity).getUUID(), arg_entity_value, tariff_value);
 
                     SQLHandler.nationCreateTariff(DB.get(), tariff);
@@ -157,7 +163,7 @@ public class Tariff {
                 }
                 case "n" -> {
                     //check that arg 1 is a nation, if so add it to the town tariff database
-                    if (townyInstance.getTownyObjectStartingWith(tariffable_entity, "n").isEmpty()) return; //TODO give command sender message that states town didn't exist
+                    if (TownyAPI.getTownyObjectStartingWith(tariffable_entity, "n").isEmpty()) return; //TODO give command sender message that states town didn't exist
                     TariffObject tariff = new TariffObject(townyInstance.getTown((Player) sender).getUUID(), townyInstance.getNation(tariffable_entity).getUUID(), arg_entity_value, tariff_value);
 
                     SQLHandler.nationCreateTariff(DB.get(), tariff);
