@@ -56,7 +56,18 @@ public class Tariff {
                 new StringArgument("t_entity_value").includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
                 new StringArgument("t_tariffable_entity").includeSuggestions(ArgumentSuggestions.strings(String.valueOf(townyInstance.getTowns()), String.valueOf(townyInstance.getNations())))
             )
-            .executes()
+            .executes(this::embargo)
+            .register();
+
+        new CommandAPICommand("nembargo")
+            .withFullDescription("This command allows your nation to embargo either a player, town, or nation with /embargo")
+            .withShortDescription("This command embargos other entities")
+            .withPermission("Tariffs.tariff")
+            .withArguments(
+                new StringArgument("n_entity_value").includeSuggestions(ArgumentSuggestions.strings("p", "n", "t")),
+                new StringArgument("n_tariffable_entity").includeSuggestions(ArgumentSuggestions.strings(String.valueOf(townyInstance.getTowns()), String.valueOf(townyInstance.getNations())))
+            )
+            .executes(this::nembargo)
             .register();
     }
 
@@ -160,6 +171,12 @@ public class Tariff {
     }
 
     private void embargo(CommandSender sender, CommandArguments commandArguments){
+        Object[] argarray = new Object[commandArguments.count() + 1];
+        argarray[argarray.length-1] = -1;
+        CommandArguments passedArgs = new CommandArguments()
+    }
+
+    private void nembargo(CommandSender sender, CommandArguments commandArguments){
         Object[] argarray = new Object[commandArguments.count() + 1];
         argarray[argarray.length-1] = -1;
         CommandArguments passedArgs = new CommandArguments()
