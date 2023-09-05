@@ -214,10 +214,4 @@ public class Tariff {
 
         CommandArguments passedArgs = new CommandArguments(argarray, argMap, argString);
     }
-
-    private void nembargo(CommandSender sender, CommandArguments commandArguments){
-        Object[] argarray = new Object[commandArguments.count() + 1];
-        argarray[argarray.length-1] = -1;
-        CommandArguments passedArgs = new CommandArguments()
-    }
 }

@@ -16,9 +16,11 @@ import java.util.UUID;
 
 public class SQLHandler {
     public static void initDB() {
+        //TODO rewrite SQL queries for SQLite
         try (final Statement statement = DB.get().createStatement()) {
             statement.addBatch("""
-                
+                    
+               
                     CREATE TABLE IF NOT EXISTS `town_tariffs` (
                 `origin` uuid NOT NULL DEFAULT uuid(), 
                 `target` uuid NOT NULL DEFAULT uuid(),
