@@ -3,13 +3,8 @@ package com.github.Xavbeat03.Tariffs.Handlers;
 import com.github.Xavbeat03.Tariffs.DataManagement.DB;
 import com.github.Xavbeat03.Tariffs.Main;
 import com.github.Xavbeat03.Tariffs.Objects.TariffObject;
-import com.github.Xavbeat03.Tariffs.command.Tariff;
-import com.palmergames.bukkit.towny.object.Town;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;

@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
 
     compileOnly("org.jetbrains:annotations:24.0.1")
 
@@ -104,7 +104,7 @@ tasks {
 
     runServer {
         // Configure the Minecraft version for our task.
-        minecraftVersion("1.20.1")
+        minecraftVersion("1.20.4")
     }
 }
 
@@ -123,6 +123,6 @@ bukkit {
 
     // Misc properties
     load = net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder.POSTWORLD // STARTUP or POSTWORLD
-    depend = listOf("Towny", "Chestshop")
+    depend = listOf("Towny", "ChestShop")
     softDepend = listOf()
 }

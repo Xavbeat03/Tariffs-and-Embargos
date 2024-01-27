@@ -15,10 +15,10 @@ public class CommandHandler {
     }
 
     public void onLoad() {
-        CommandAPI.onLoad(new CommandAPIBukkitConfig(instance).shouldHookPaperReload(true).silentLogs(true));
     }
 
     public void onEnable() {
+        CommandAPI.onLoad(new CommandAPIBukkitConfig(instance).shouldHookPaperReload(true).silentLogs(true));
         CommandAPI.onEnable();
 
         // Register commands here

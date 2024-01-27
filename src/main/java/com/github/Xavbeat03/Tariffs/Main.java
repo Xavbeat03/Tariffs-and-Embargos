@@ -8,6 +8,9 @@ import com.github.Xavbeat03.Tariffs.Objects.TariffObject;
 import com.github.Xavbeat03.Tariffs.command.CommandHandler;
 import com.github.Xavbeat03.Tariffs.listener.ListenerHandler;
 import com.palmergames.bukkit.towny.TownyAPI;
+import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIBukkitConfig;
+import dev.jorel.commandapi.CommandAPIConfig;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.LinkedHashMap;
